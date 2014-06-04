@@ -1,0 +1,17 @@
+tokyo% g++ TailChecker.cpp
+tokyo% a.out correct.txt
+Int
+Bool
+String
+Point
+XYZPoint
+IntOrBool
+IntList
+F
+Int
+Int
+Int
+Int
+Int
+Int
+Point

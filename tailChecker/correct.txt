@@ -1,0 +1,33 @@
+TYPEDEF Int BASIC
+TYPEDEF Bool BASIC
+TYPEDEF String BASIC
+TYPEDEF Point PRODUCT x Int y Int
+TYPEDEF XYZPoint SUBTYPE Point z Int
+TYPEDEF IntOrBool SUM i Int b Bool
+TYPEDEF IntList SEQUENCE Int
+TYPEDEF F FUNCTION Int Int
+
+VARDECL i Int
+VARDECL b Bool
+VARDECL s String
+VARDECL p Point
+VARDECL pp XYZPoint
+VARDECL ib IntOrBool
+VARDECL il IntList
+VARDECL f F
+
+i
+b
+s
+p
+pp
+ib
+il
+f
+(f i)
+(HEAD (TAIL (CONS i il) ))
+(TREATAS IntOrBool i (EMBED IntOrBool b))
+(ACCESSP p x)
+(ACCESSP pp x)
+(ACCESSP pp z)
+(MKPROD Point x i y i)

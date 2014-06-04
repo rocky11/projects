@@ -1,0 +1,49 @@
+tokyo% a.out sample.txt
+Int
+
+Error [line: 20]
+Reference to "r" without declaration
+20:r
+   ^
+String
+Point
+XYZPoint
+
+Error [line: 24]
+Reference to "tb" without declaration
+24:tb
+   ^^
+IntList
+F
+Int
+
+Error [line: 28]
+Second argument in CON must have sequence type, but found type "Bool"
+28:(HEAD (TAIL (CONS i b) ))
+                       ^
+
+Error [line: 29]
+Reference to "x" without declaration
+29:(TREATAS IntOrBool i (EMBED IntOrBool x))
+                                         ^
+
+Error [line: 30]
+Tried calling ACCESSP with field 'b' from an expression of type 'Point'
+30:(ACCESSP p b)
+            ^
+
+Error [line: 31]
+Tried to call ACCESSP with type "String"
+31:(ACCESSP s b)
+            ^
+Int
+
+Error [line: 33]
+Referenced undeclared type "bool"
+33:(MKPROD bool x i y i)
+           ^^^^
+
+Error [line: 33]
+Tried to call MKPROD on type "bool"
+33:(MKPROD bool x i y i)
+           ^^^^
