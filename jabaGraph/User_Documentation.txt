@@ -1,0 +1,57 @@
+NAME
+	jabaGraph - creates HTML table from Jaba-produced XML
+
+SYNOPSIS
+	java jabaGraph [ -sd ] file1 [ file2 ]
+
+DESCRIPTION
+	The jabaGraph program reads a Jaba-produced file1 and
+	transforms it into an HTML table. The jabaGraph program
+	will write the HTML table to file2, if specified; if no
+	output is specified, the output will be written to
+	file1.html.
+
+OPTIONS
+	The following options are supported:
+
+	-s	The HTML output will be in simple mode.
+
+	-d	The HTML output will be in detailed mode.
+
+	If no output flag is specified, the HTML output will be
+	in simple mode.
+
+OPERANDS
+	The following operands are supported:
+
+		file1	A path name of the input file.
+
+		file2	A path name of the output file. If no
+			file2 is specified, the output file named
+			file1.html will be written.
+
+EXAMPLES
+	Example 1: Simple view of a CFG
+	The following command:
+	example% java jabaGraph inputs/my-file.cfg output.html
+	writes output.html with simple representation of my-file.cfg.
+
+	Example 2: Detailed view of ICFG
+	The following command:
+	example% java jabaGraph -d inputs/my-file.icfg
+	writes my-file.icfg.html with detailed representation of
+	my-file.icfg.
+
+EXIT STATUS
+	The following exit values are returned:
+
+	0	Input file was output successfully.
+
+	>0	An error occurred.
+
+NOTES
+	The jabaGraph program will compile using the following command:
+	example% javac jabaGraph.java Writer.java
+
+	Some warnings may be produced, but the program will run properly
+	irrespective of them.
