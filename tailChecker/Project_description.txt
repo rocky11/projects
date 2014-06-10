@@ -1,15 +1,43 @@
 Description:
 ~~~~~~~~~~~~
-The objective of this project is to write a type checker for a simple language with Lisp-like syntax called TAIL.  The program is broken down in two components Parser and Checker. Before going into the design details lets look at the assumption.  The program assumes that all the syntax and semantics of the TYPEDEF section and VARDECL section are correct.  The program does only a partial checking for them to see if they contain a right number of arguments or not. Secondly, written code assumes that all the semantics and syntax in the EXPRESSION section also correct.  Third assumption made by the program is just to output the type and corresponding type error for particular expression.  The program will not recognize the keywords that are not specified in the assignment.  It means that it will recognize only the defined keyword like PRODUCT, MKPROD etc. Moreover, the case would matter in declaration and checking of the variables and function names.
+The objective of this project is to write a type checker for a simple language 
+with Lisp-like syntax called TAIL.  The program is broken down in two components 
+Parser and Checker. Before going into the design details lets look at the assumption.
+The program assumes that all the syntax and semantics of the TYPEDEF section and 
+VARDECL section are correct.  The program does only a partial checking for them 
+to see if they contain a right number of arguments or not. Secondly, written code 
+assumes that all the semantics and syntax in the EXPRESSION section also correct.  
+Third assumption made by the program is just to output the type and corresponding 
+type error for particular expression.  The program will not recognize the keywords 
+that are not specified in the assignment.  It means that it will recognize only 
+the defined keyword like PRODUCT, MKPROD etc. Moreover, the case would matter in 
+declaration and checking of the variables and function names.
 
 Design:
 ~~~~~~~
-The program asks for the input file name on the command line prompt.  Then, program parses the file and stores the file in the data structure (vector).  Here it assumes that the semantics of all the inputs are correct.  Parsing done by detecting blank space in between and checking the characters of the parsed string.  
+The program asks for the input file name on the command line prompt.  Then, program 
+parses the file and stores the file in the data structure (vector).  Here it assumes 
+that the semantics of all the inputs are correct.  Parsing done by detecting blank 
+space in between and checking the characters of the parsed string.  
 
 1) Parsing
 
-This part of the code looks for the first token of each expression and takes it in.  Then it goes to the next token and stores it.  After storing it the token is being checked through large switch control structure. If the token detected is PRODUCT then it know how many arguments the product has and looks for those arguments.  Thus, parser builds a representation of TYPEDEFS, VARDECLS, and EXPRESSIONS in the data structure. Later this representation is accessed by type-checker to find an error in type matching.  
+This part of the code looks for the first token of each expression and takes it in.  
+Then it goes to the next token and stores it.  After storing it the token is being 
+checked through large switch control structure. If the token detected is PRODUCT then 
+it know how many arguments the product has and looks for those arguments.  Thus, 
+parser builds a representation of TYPEDEFS, VARDECLS, and EXPRESSIONS in the 
+data structure. Later this representation is accessed by type-checker to find an 
+error in type matching.  
 
 2) Checker
 
-This part of the code checks if the types of expression match or not. Most of the work is done in type checking.  The expressions are represented by their classes and subclasses.  As the program detects the type of the expression, it also checks if there is sub-expression within expression.  It must do so, to compute the type of the expression. Before computing the type of the expression, code computes type of the sub-expression. While computing a type of an expression if it encounters an error than it outputs the cause of that error and proceeds to the next expression. If there is no error detected, it outputs the type of an expression and goes to the next expression.  
+This part of the code checks if the types of expression match or not. Most of the 
+work is done in type checking.  The expressions are represented by their classes 
+and subclasses.  As the program detects the type of the expression, it also checks 
+if there is sub-expression within expression.  It must do so, to compute the type 
+of the expression. Before computing the type of the expression, code computes type 
+of the sub-expression. While computing a type of an expression if it encounters an 
+error than it outputs the cause of that error and proceeds to the next expression. 
+If there is no error detected, it outputs the type of an expression and goes to 
+the next expression.  
